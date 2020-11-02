@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+
+    <span th:text="${name}+'欢迎您！666'">刘备</span>,欢迎您！666
+    <form th:action="@{/login}">
+        <input type="text" name="name">
+        <input type="submit" value="登录">
+    </form>
+
+
+    <table>
+        <tr>
+           <td>编号</td>
+            <td>姓名</td>
+            <td>密码</td>
+        </tr>
+        <tr th:each="user:${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学习amazeui</title>
+    <!-- 一.引入amazeui的css和js-->
+    <link rel="stylesheet" th:href="@{/amazeui/assets/css/amazeui.css}"/>
+    <script  th:src="@{/amazeui/assets/js/jquery.min.js}"></script>
+    <script  th:src="@{/amazeui/assets/js/amazeui.js}"></script>
+    <script  th:src="@{/amazeui/pagination/amazeui-pagination.js}"></script>
+</head>
+<body>
+<div class="am-g">
+    <div class="am-u-lg-8 am-u-sm-centered">
+        <table   class="am-table am-table-bordered am-table-radius am-table-striped">
+            <tr class="am-primary">
+                <th>编号</th>
+                <th>姓名</th>
+                <th>密码</th>
+            </tr>
+            <tr th:each="user:${users}" th:class="${userStat.even}?'am-primary':'am-danger'">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.password}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

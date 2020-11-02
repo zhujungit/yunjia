@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <!--该文件充当mapper接口实现类，一个xml-->
+<mapper namespace="com.hp.mapper.UsersMapperXml">
+
+<select id="getUsers" resultType="users">
+     select * from users
+  </select>
+<select id="getUsersById" parameterType="int" resultType="usErs">
+    select * from users where id=#{id}
+    </select>
+    <insert id="addUsers" parameterType="users">
+     insert into users values(#{id},#{username},#{password})
+    </insert>
+    <select id="getUsersByPage" parameterType="map" resultType="uSerS">
+     select *from users limit #{start},#{size}
+    </select>
+</mapper>

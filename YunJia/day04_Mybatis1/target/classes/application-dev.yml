@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql:///weektest
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: mapper/*.xml//扫描resources下mapper包下的xml文件
+  type-aliases-package: com.ph.pojo//给pojo下全路径取一个别名，别名时类名，不区分大小写

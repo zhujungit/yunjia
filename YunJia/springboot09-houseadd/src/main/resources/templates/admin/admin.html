@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>后台首页</title>
+    <link rel="stylesheet" th:href="@{/amazeui/assets/css/amazeui.css}" />
+    <script th:src="@{/amazeui/assets/js/jquery.min.js}"></script>
+    <script th:src="@{/amazeui/assets/js/amazeui.js}"></script>
+</head>
+<body>
+
+<!-- 链接触发器， href 属性为目标元素 ID -->
+<a href="#doc-oc-demo1" data-am-offcanvas>返回菜单</a>
+
+<!-- 侧边栏内容 -->
+<div id="doc-oc-demo1" class="am-offcanvas">
+    <div class="am-offcanvas-bar">
+        <div class="am-offcanvas-content">
+            <p>
+                <a href="javascript:void(0)" onclick="showModel('/users/show')">用户维护</a>
+            </p>
+            <p>
+                <a href="javascript:void(0)" onclick="showModel('/house/show')">房源维护</a>
+            </p>
+            <p>
+                <a th:href="@{/index}">主菜单</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div id="main-content">
+<!--将show_users.html的内容放在此处展示-->
+</div>
+
+</body>
+<script>
+    //自动出现左侧菜单栏
+    $('#doc-oc-demo1').offCanvas({effect: 'push'});
+
+    function showModel(path){
+        $("#main-content").load(path);
+    }
+
+
+</script>
+</html>

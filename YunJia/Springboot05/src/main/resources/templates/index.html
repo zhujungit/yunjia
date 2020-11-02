@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 一.引入amazeui的css和js-->
+    <link rel="stylesheet" th:href="@{/amazeui/assets/css/amazeui.css}"/>
+    <script  th:src="@{/amazeui/assets/js/jquery.min.js}"></script>
+    <script  th:src="@{/amazeui/assets/js/amazeui.js}"></script>
+    <script  th:src="@{/amazeui/pagination/amazeui-pagination.js}"></script>
+
+</head>
+<body>
+<!-- 二.amazeui和html的基本标签-->
+
+<h1 style="text-align: center">员工信息表</h1>
+<!--相关属性见 http://amazeui.shopxo.net/css/grid/ -->
+<div class="am-g">
+    <div class="am-u-lg-8 am-u-lg-centered">
+        <!--相关属性见 http://amazeui.shopxo.net/css/table/ -->
+        <table class="am-table am-table-bordered am-table-striped  am-table-hover am-table-centered">
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>密码</th>
+            </tr>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 分页,详见 http://amazeui.shopxo.net/css/pagination/  -->
+<div class="am-container">
+    <ul class="am-pagination am-pagination-centered">
+    </ul>
+</div>
+
+</body>
+<!-- 三.编写js代码  -->
+<script>
+    //1调用showUsers函数
+    showUsers(1);
+    //2.编写showUsers函数
+    function showUsers(pageNo){
+        //3.异步请求
+        $.post("/users",{"pageNo":pageNo},function (data) {
+            $('#tbody').html('');// 清空tbody
+            //4.遍历结果集list
+            $.each(data.list,function(index,user){
+                console.log(user)
+                var tr='<tr><td>'+user.id+'</td>' +
+                    '<td>'+user.username+'</td>' +
+                    '<td>'+user.password+'</td></tr>';
+                $('#tbody').append(tr);
+            })
+            //5.创建分页
+            var pagination = new Pagination({
+                wrap: $('.am-pagination'),//存放分页内容
+                count: parseInt(data.pages),//总页数
+                current: parseInt(data.pageNum),//当前页
+                prevText: '上一页', // prev 按钮的文本内容
+                nextText: '下一页', // next 按钮的文本内容
+                callback: function (current) { // 每一个页数按钮的回调事件
+                    console.log(current)
+                    showUsers(current)
+                }
+            });
+        })
+    }
+
+</script>
+</html>

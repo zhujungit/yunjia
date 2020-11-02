@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息</title>
+    <!---->
+    <link rel="stylesheet" th:href="@{/amazeui/assets/css/amazeui.css}" />
+    <script th:src="@{/amazeui/assets/js/jquery.min.js}"></script>
+    <script th:src="@{/amazeui/assets/js/amazeui.js}"></script>
+    <script th:src="@{/amazeui/pagination/amazeui-pagination.js}"></script>
+</head>
+<body>
+
+<div class="am-g">
+    <div class="am-u-sm-10 am-u-sm-centered">
+        <h3 style="text-align: center">用户信息表</h3>
+            <table class="am-table am-table-bordered am-table-striped am-table-hover am-table-centered" >
+                <tr>
+                    <th>用户编号</th>
+                    <th>姓名</th>
+                    <th>密码</th>
+                    <th>性别</th>
+                    <th>生日</th>
+                    <th>头像</th>
+                    <th>角色</th>
+                </tr>
+                <tr th:each="users:${usersPage.list}">
+                    <td th:text="${users.uid}"></td>
+                    <td th:text="${users.name}"></td>
+                    <td th:text="${users.psw}"></td>
+                    <td th:text="${users.sex}"></td>
+                    <td th:text="${#dates.format(users.birth,'yyyy-MM-dd')}"></td>
+                    <td><img th:src="${users.headImg}" th:height="100px" th:width="100px"></td>
+                    <td th:text="${users.role}"></td>
+                </tr>
+        </table>
+    </div>
+</div>
+<!--分页部分-->
+<div class="am-g">
+    <div class="am-u-sm-4 am-u-sm-centered">
+        <ul class="am-pagination">
+
+        </ul>
+    </div>
+</div>
+
+<input type="hidden" id="pages" th:value="${usersPage.pages}">
+<input type="hidden" id="pageNum" th:value="${usersPage.pageNum}">
+
+</body>
+
+<script>
+    var pages=$("#pages").val();
+    var pageNum=$("#pageNum").val();
+
+    //执行分页,自动生成分页的ul-li
+    var pagination = new Pagination({
+        wrap : $(".am-pagination"), // 生成的分页标签放在ul中
+        count :parseInt(pages), // 总页数
+        current:parseInt(pageNum),//当前页
+        prevText : '上一页', // prev 按钮的文本内容
+        nextText : '下一页', // next 按钮的文本内容
+        callback: function(current){//点击上一页或下一页，就会将当前页数传值到current
+            console.log(current);
+            //location.href="/users/show?pageNo="+current;
+            $("#main-content").load("/users/show?pageNo="+current);
+        }
+    });
+
+
+</script>
+</html>

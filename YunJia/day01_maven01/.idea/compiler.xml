@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="text" />
+        <module name="springboot09-houseadd" />
+        <module name="day02_Stringboot" />
+        <module name="Springboot05" />
+        <module name="day01_maven01" />
+        <module name="day04_Mybatis" />
+        <module name="springboot07-users" />
+        <module name="Springboot06" />
+        <module name="day04_Mybatis1" />
+        <module name="Springboot006" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="day02_test" target="1.8" />
+      <module name="day04_Mybatis" target="1.8" />
+      <module name="day04mybatis" target="1.8" />
+      <module name="maven02" target="1.8" />
+      <module name="spring09-houseadd" target="1.8" />
+      <module name="spring09houseadd" target="1.8" />
+      <module name="springboot006" target="1.8" />
+      <module name="Springboot006" target="1.8" />
+      <module name="springboot08-house" target="1.8" />
+      <module name="test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Springboot05" options="-parameters" />
+      <module name="Springboot06" options="-parameters" />
+      <module name="day02_Stringboot" options="-parameters" />
+      <module name="day02_test" options="-parameters" />
+      <module name="day04_Mybatis" options="-parameters" />
+      <module name="day04_Mybatis1" options="-parameters" />
+      <module name="day04mybatis" options="-parameters" />
+      <module name="spring09-houseadd" options="-parameters" />
+      <module name="springboot006" options="-parameters" />
+      <module name="springboot07-users" options="-parameters" />
+      <module name="springboot08-house" options="-parameters" />
+      <module name="springboot09-houseadd" options="-parameters" />
+      <module name="text" options="-parameters" />
+    </option>
+  </component>
+</project>

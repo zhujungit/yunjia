@@ -1,0 +1,20 @@
+#使用springboot自带的数据源hikariCP
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///weektest
+    username: root
+    password: 123456
+  thymeleaf: #关闭缓存
+    cache: false
+
+# mybatis配置 showSql
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
